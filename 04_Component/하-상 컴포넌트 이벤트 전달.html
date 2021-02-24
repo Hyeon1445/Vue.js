@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>상위->하위 컴포넌트 데이터 전달</title>
+    </head>
+    <body>
+        <div id="app">
+            <child-compo v-on:show-log="printText"></child-compo>
+            <!--show-log는 하위 컴포넌트의 이벤트명-->
+            <!--printText는 상위 컴포넌트의 메서드명-->
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+        <script>
+            Vue.component('child-compo',{
+                template:'<button v-on:click="showLog">show</button>',
+                methods:{
+                    showLog:function(){
+                        this.$emit('show-log');
+                    }
+                }
+            });
+
+
+            var app=new Vue({
+                el:'#app',
+                data:{
+                    message:'Hello Vue! passed from Parent Component'
+                },
+                //메세지는 딱히 나타나진 않음{{message}}가 없어서(?)
+                methods:{
+                    printText:function(){
+                        console.log("received an event");
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>(지역)컴포넌트 유효 범위</title>
+    </head>
+    <body>
+        <div id="app">
+            <my-component1></my-component1>
+            <my-component2></my-component2>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+        <script>
+            var cmp1={
+                template:'<div style="background-color:yellow">첫 번째 지역 컴포넌트: {{num1}}</div>',
+                data:function(){
+                    return{
+                        num1:100
+                    }
+                }
+            };
+            var cmp2={
+                template:'<div style="background-color:green">두 번째 지역 컴포넌트 : {{num2}}<div>',
+                data:function(){
+                    return{
+                        num2:cmp1.data.num2
+                    }
+                }
+            };
+            new Vue({
+                el:'#app',
+                components:{
+                    'my-component1':cmp1,
+                    'my-component2':cmp2
+                }
+            });
+        </script>
+    </body>
+</html>
