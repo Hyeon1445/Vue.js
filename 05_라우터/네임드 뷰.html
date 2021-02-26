@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Vue Named View Sample</title>
+    </head>
+    <body>
+        <div id="app">
+            <router-view name="name1"></router-view>
+            <router-view></router-view><!--name 비어있으면 default-->
+            <router-view name="name3"></router-view>
+            <!--라우팅 영역 정의-->
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+        <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+        <script>
+            var n1={template:'<div style="background-color:yellow">name1</div>'}
+            var n2={template:'<div style="background-color:green">name2</div>'}
+            var n3={template:'<div style="background-color:red">name3</div>'}
+            //컴포넌트 내용 정의
+
+            var router=new VueRouter({
+                routes:[
+                    {
+                        path:'/',
+                        components:{
+                            name1:n1,
+                            default:n2,
+                            name3:n3
+                        }
+                    }
+                ]
+            });
+            //path:'/'이면 그냥 주소 안 바꿔도 창 열리자마자 바로 뜸
+
+
+            var app=new Vue({
+                router
+            }).$mount('#app');
+        </script>
+    </body>
+</html>
