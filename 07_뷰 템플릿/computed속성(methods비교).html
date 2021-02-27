@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>computed vs methods</title>
+    </head>
+    <body>
+        <div id="abc" style="background-color:yellow">
+            <p>{{reversedMSG}}</p>
+        </div>
+        <!--computed 속성-->
+
+
+        <div id="abcde" style="background-color:green">
+            <p>{{msg}}</p>
+            <button v-on:click="rvsmsg">역순바꾸기</button>
+        </div>
+        <!--methods속성-->
+
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+        <script>
+            new Vue({
+                el:'#abc',
+                data:{
+                    message:'Hello World! computed'
+                },
+                computed:{
+                    reversedMSG:function(){
+                        return this.message.split('').reverse().join('');
+                    }
+                }
+            });
+            //computed 속성
+
+            
+            new Vue({
+                el:'#abcde',
+                data:{
+                    msg: 'Hello world! methods'
+                },
+                methods:{
+                    rvsmsg:function(){
+                        this.msg=this.msg.split('').reverse().join('');
+                        return this.msg;
+                    }
+                }
+            });
+            //methods 속성
+            
+        </script>
+    </body>
+</html>

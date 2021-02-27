@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>v-on디렉티브 이용 event처리</title>
+    </head>
+    <body>
+        <div id="abc">
+            <button v-on:click="clickBtn">클릭</button>
+            <button v-on:click="butt(10)">클릭2</button>
+            <button v-on:click="clbut">클릭3</button>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+        <script>
+            new Vue({
+                el:'#abc',
+                methods:{
+                    clickBtn:function(){
+                        alert('clicked');
+                    },
+                    butt:function(num){
+                        alert('clicked '+num+' times');
+                    },
+                    clbut:function(event){
+                        console.log(event);
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
