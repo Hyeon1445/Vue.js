@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Vue Client Side Rendering</title>
+    </head>
+    <body>
+        <div id="app">
+            {{message}}
+            <list-component></list-component>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+        <script>
+            var cmp={
+                template: '<ul><li>item1</li><li>item2</li></ul>'
+            };
+
+            new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello World!'
+                },
+                components: {
+                    'list-component':cmp
+                }
+            });
+        </script>
+    </body>
+</html>
